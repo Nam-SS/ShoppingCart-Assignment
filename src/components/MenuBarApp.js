@@ -63,8 +63,8 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Product1</MenuItem>
+                <MenuItem onClick={handleClose}>Product2</MenuItem>
                 <Button color="success" variant="contained" onClick={handleClose}>Show All</Button>
               </Menu>
             </div>
