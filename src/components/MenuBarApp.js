@@ -9,16 +9,29 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Button, Icon } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 
 export default function MenuAppBar() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [buttonText, setButtonText] = React.useState("Show All");
+
+  
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const onClickCart = ()=>{
+    navigate('Cart');
+    handleClose();
+  };
+
+  const cart = useSelector((state) => state.cart)
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+    cart.length<=3?setButtonText("Go to Cart"):setButtonText("Show All");
   };
 
   return (
@@ -63,9 +76,8 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Product1</MenuItem>
-                <MenuItem onClick={handleClose}>Product2</MenuItem>
-                <Button color="success" variant="contained" onClick={handleClose}>Show All</Button>
+                {cart?.map((item) => (<MenuItem key={item.id}>{item.name} - {item.quantity}</MenuItem>))}
+                {cart.length>0?<Button color="success" variant="contained" onClick={onClickCart}>{buttonText}</Button>:"---no item added---"}
               </Menu>
             </div>
         </Toolbar>

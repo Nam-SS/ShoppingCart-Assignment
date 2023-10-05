@@ -6,9 +6,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import {addToCart} from '../redux/cartSlice';
 
 export default function ShoppingCard(props) {
-  const {img,name,price} = props.details;
+  const {id,img,name,price} = props.details;
+  const dispatch = useDispatch();
   console.log("shopping card: ",props.details);
   return (
     <Grid item xs={12} sm={4} md={4} > 
@@ -28,7 +31,11 @@ export default function ShoppingCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Add to Cart</Button>
+        <Button size="small" onClick={() => 
+    {console.log(id,name,img,price);dispatch(addToCart({
+      id, name, img, price
+    }))}
+  }>Add to Cart</Button>
         <Button
             size="small"
             disableElevation
