@@ -29,6 +29,18 @@ const mockApiResponse = [
         img: 'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/cauliflower2-copy-3ab827f.jpg',
         price: 40
     },
+    {
+        id: 6,
+        name: 'Carrot',
+        img: 'https://images.pexels.com/photos/1306559/pexels-photo-1306559.jpeg',
+        price: 45
+    },
+    {
+        id: 7,
+        name: 'Capsicum',
+        img: 'https://t4.ftcdn.net/jpg/02/87/25/37/240_F_287253716_I1seSRet5pt8YGBRRcTbPPV1WesM00n9.jpg',
+        price: 95
+    },
 ]   
 
 export default mockApiResponse;

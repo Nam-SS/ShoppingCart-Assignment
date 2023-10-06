@@ -10,13 +10,14 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Button, Icon } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import HomeIcon from '@mui/icons-material/Home';
 
 export default function MenuAppBar() {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [buttonText, setButtonText] = React.useState("Show All");
-
+  const pathName = window.location.pathname;
   
   const handleClose = () => {
     setAnchorEl(null);
@@ -27,11 +28,18 @@ export default function MenuAppBar() {
     handleClose();
   };
 
+  const onClickHome = ()=>{
+    navigate('/');
+    handleClose();
+  };
+
+
   const cart = useSelector((state) => state.cart)
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
     cart.length<=3?setButtonText("Go to Cart"):setButtonText("Show All");
+    console.log("pathName:",pathName);
   };
 
   return (
@@ -51,16 +59,17 @@ export default function MenuAppBar() {
             Shopping Cart
           </Typography>
             <div>
-              <IconButton
+              {/* <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
                 color="inherit"
-              >
-                <ShoppingCartIcon />
-              </IconButton>
+              > */}
+              {pathName==='/' && <ShoppingCartIcon onClick={handleMenu}/>}
+              {pathName==='/Cart' && <HomeIcon onClick={onClickHome}/>}
+              {/* </IconButton> */}
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
