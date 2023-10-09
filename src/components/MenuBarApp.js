@@ -85,7 +85,7 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                {cart?.map((item) => (<MenuItem key={item.id}>{item.name} - {item.quantity}</MenuItem>))}
+                {cart?.filter((item, index) => index < 3).map((filteredItem) => (<MenuItem key={filteredItem.id}>{filteredItem.name} - {filteredItem.quantity}</MenuItem>))}
                 {cart.length>0?<Button color="success" variant="contained" onClick={onClickCart}>{buttonText}</Button>:"---no item added---"}
               </Menu>
             </div>
