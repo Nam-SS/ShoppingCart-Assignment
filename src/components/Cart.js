@@ -7,8 +7,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import { useSelector } from 'react-redux'
-
+import { useSelector } from 'react-redux';
+import { AMTTOBEPAID, ITEMSINCART, PRICE, PRODUCTS, QTY, TOTAL } from '../utils/Constants';
 
 function ccyFormat(num) {
   return `${num.toFixed(2)}`;
@@ -42,14 +42,14 @@ export default function Cart() {
         <TableHead>
           <TableRow>
             <TableCell align="center" colSpan={4}>
-              Item in Cart - Details
+              {ITEMSINCART}
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Products</TableCell>
-            <TableCell align="right">Qty.</TableCell>
-            <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Total</TableCell>
+            <TableCell>{PRODUCTS}</TableCell>
+            <TableCell align="right">{QTY}</TableCell>
+            <TableCell align="right">{PRICE}</TableCell>
+            <TableCell align="right">{TOTAL}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -63,7 +63,7 @@ export default function Cart() {
           ))}
           <TableRow>
             <TableCell rowSpan={3} />
-            <TableCell colSpan={2}>Amount to be paid</TableCell>
+            <TableCell colSpan={2}>{AMTTOBEPAID}</TableCell>
             <TableCell align="right">{ccyFormat(Total)}</TableCell>
           </TableRow>
         </TableBody>

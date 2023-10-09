@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,6 +11,7 @@ import { Button, Icon } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import HomeIcon from '@mui/icons-material/Home';
+import {GOTOCART, NOITEMSADDED, SHOPPINGCART, SHOWALL} from '../utils/Constants';
 
 export default function MenuAppBar() {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ export default function MenuAppBar() {
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
-    cart.length<=3?setButtonText("Go to Cart"):setButtonText("Show All");
+    cart.length<=3?setButtonText(GOTOCART):setButtonText(SHOWALL);
     console.log("pathName:",pathName);
   };
 
@@ -56,7 +56,7 @@ export default function MenuAppBar() {
             <ShoppingBagIcon />
           </Icon>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Shopping Cart
+            {SHOPPINGCART}  
           </Typography>
             <div>
               {/* <IconButton
@@ -86,7 +86,7 @@ export default function MenuAppBar() {
                 onClose={handleClose}
               >
                 {cart?.filter((item, index) => index < 3).map((filteredItem) => (<MenuItem key={filteredItem.id}>{filteredItem.name} - {filteredItem.quantity}</MenuItem>))}
-                {cart.length>0?<Button color="success" variant="contained" onClick={onClickCart}>{buttonText}</Button>:"---no item added---"}
+                {cart.length>0?<Button color="success" variant="contained" onClick={onClickCart}>{buttonText}</Button>:NOITEMSADDED}
               </Menu>
             </div>
         </Toolbar>

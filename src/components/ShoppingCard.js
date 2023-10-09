@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart, incrementQuantity, decrementQuantity, removeItem } from '../redux/cartSlice';
 import { useSelector } from 'react-redux';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import { ADDTOCART } from '../utils/Constants';
 
 export default function ShoppingCard(props) {
   const { id, img, name, price } = props.details;
@@ -61,7 +62,7 @@ export default function ShoppingCard(props) {
               id, name, img, price
             }));
           }
-          }>Add to Cart</Button>
+          }>{ADDTOCART}</Button>
           {displayButton && <Button
             size="small"
             disableElevation
