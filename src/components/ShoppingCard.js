@@ -17,8 +17,6 @@ export default function ShoppingCard(props) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart)
   const displayButton = cart.find((item) => item.id === id)
-  // const quantity = cart.find((item) => {if(item.id === id){console.log(item)
-  //                           return item.quantity}})
   const [quantity, setQuantity] = React.useState('0');
 
   const retreiveQty = () => {
@@ -31,7 +29,6 @@ export default function ShoppingCard(props) {
   React.useEffect(() => {
     retreiveQty();
   }, [cart])
-  console.log("shopping card: ", props.details);
   return (
     <Grid item xs={12} sm={4} md={4} >
       <Card sx={{ maxWidth: 300 }}>

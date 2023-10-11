@@ -8,7 +8,6 @@ import {addToCart,incrementQuantity,decrementQuantity} from '../redux/cartSlice'
 export default function Body() {
     const [products, setProducts] = useState(mockApiResponse);
     return(<>
-    {/* {console.log("launch card:",products.map((product)=>{return product}))} */}
     <Box sx={{mx: 'auto', m: 7, p: 7 }}>
     <Grid container
                 spacing={10}

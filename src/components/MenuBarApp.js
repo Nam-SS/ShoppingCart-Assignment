@@ -39,7 +39,6 @@ export default function MenuAppBar() {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
     cart.length<=3?setButtonText(GOTOCART):setButtonText(SHOWALL);
-    console.log("pathName:",pathName);
   };
 
   return (
@@ -85,7 +84,7 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                {cart?.filter((item, index) => index < 3).map((filteredItem) => (<MenuItem key={filteredItem.id}>{filteredItem.name} - {filteredItem.quantity}</MenuItem>))}
+                {cart.filter((item, index) => index < 3).map((filteredItem) => (<MenuItem key={filteredItem.id}>{filteredItem.name} - {filteredItem.quantity}</MenuItem>))}
                 {cart.length>0?<Button color="success" variant="contained" onClick={onClickCart}>{buttonText}</Button>:NOITEMSADDED}
               </Menu>
             </div>

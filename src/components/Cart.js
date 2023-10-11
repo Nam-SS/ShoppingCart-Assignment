@@ -30,7 +30,6 @@ function CalculateTotal(items) {
 
 export default function Cart() {
    const cart = useSelector((state) => state.cart)
-   console.log("cart in cart:",cart);
    const rows = cart?.map((item)=>createRow(item.name,item.quantity,item.price))
    
   const Total = CalculateTotal(rows);
