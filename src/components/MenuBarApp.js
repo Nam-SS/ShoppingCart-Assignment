@@ -58,14 +58,6 @@ export default function MenuAppBar() {
             {SHOPPINGCART}  
           </Typography>
             <div>
-              {/* <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              > */}
               {pathName==='/' && <ShoppingCartIcon onClick={handleMenu}/>}
               {pathName==='/Cart' && <HomeIcon onClick={onClickHome}/>}
               {/* </IconButton> */}
